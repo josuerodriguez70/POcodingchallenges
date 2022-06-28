@@ -1,0 +1,40 @@
+import java.util.Arrays;
+import java.util.Scanner;
+
+public class YourNameIsMine {
+    public static void main(String args[]) {
+        Scanner sc = new Scanner (System.in);
+        
+        int nxt = sc.nextInt();
+        sc.nextLine();
+
+        String[] nms = new String[nxt];
+        for (int i = 0; i < nxt; i++)
+        {
+            nms[i] = sc.nextLine();
+        }
+
+        for (String names : nms) {
+            System.out.println(areNamesSub(names.split(" ")[0], names.split(" ")[1]));
+        }
+
+        sc.close();
+     
+    }
+    
+    public static String areNamesSub(String name1, String name2) {
+        if (parseNames(name1, name2) || parseNames(name2, name1)) {
+            return "YES";
+        }
+        return "NO";
+    }
+
+    public static boolean parseNames(String name1, String name2) {
+        for (int i=0; i<name1.length(); i++) {
+            if (name2.indexOf(name1.charAt(i)) == -1) {
+                return false;
+            }
+        }
+        return true;
+    }
+}
